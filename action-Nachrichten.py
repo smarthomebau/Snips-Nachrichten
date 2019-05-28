@@ -35,5 +35,5 @@ if __name__ == "__main__":
     mqtt_opts = MqttOptions(username=MQTT_USERNAME, password=MQTT_PASSWORD, broker_address=MQTT_BROKER_ADDRESS)
 
     with Hermes(mqtt_options=mqtt_opts) as h:
-        h.subscribe_intent(add_postfix("newsInfo"), intent_callback_fuel)
+        h.subscribe_intent(add_postfix("newsInfo"), intent_callback_news)
         h.start()
