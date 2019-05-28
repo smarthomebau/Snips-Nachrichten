@@ -1,6 +1,4 @@
 # Bindings for the hermes protocol
 hermes-python>=0.7
 feedparser
-re
-subprocess
 toml>=0.10.0
