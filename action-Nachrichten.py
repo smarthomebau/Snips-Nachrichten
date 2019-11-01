@@ -9,7 +9,7 @@ import re
 import feedparser
 from subprocess import Popen
 
-USERNAME_INTENTS = "hablijack"
+USERNAME_INTENTS = "smarthomebau"
 MQTT_BROKER_ADDRESS = "localhost:1883"
 MQTT_USERNAME = None
 MQTT_PASSWORD = None
