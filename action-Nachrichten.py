@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import configparser
 from hermes_python.hermes import Hermes, MqttOptions
 import io
 import toml
@@ -21,8 +20,8 @@ def intent_callback_news(hermes, intent_message):
     tagesschau_url = 'http://www.tagesschau.de/export/podcast/hi/tagesschau-in-100-sekunden/'
     feed = feedparser.parse(tagesschau_url)
     podcast_url = feed['entries'][0]['links'][0]['href']
-    player = Popen(["mpg123", podcast_url])
-    hermes.publish_end_session(intent_message.session_id, "")
+    player = Popen(['mpg123', '-q' , podcast_url])
+    hermes.publish_end_session(intent_message.session_id, "Die Nachrichten:")
 
 if __name__ == "__main__":
     snips_config = toml.load('/etc/snips.toml')
@@ -35,5 +34,5 @@ if __name__ == "__main__":
     mqtt_opts = MqttOptions(username=MQTT_USERNAME, password=MQTT_PASSWORD, broker_address=MQTT_BROKER_ADDRESS)
 
     with Hermes(mqtt_options=mqtt_opts) as h:
-        h.subscribe_intent(add_postfix("newsInfo"), intent_callback_news)
+        h.subscribe_intent(add_postfix("GetNewsIntent"), intent_callback_news)
         h.start()
