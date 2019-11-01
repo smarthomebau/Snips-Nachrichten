@@ -1,4 +1,5 @@
-#!/usr/bin/env bash -e
+#!/usr/bin/env bash
+set -e
 
 # Copy config.ini.default if config.ini doesn't exist.
 if [ ! -e config.ini ]
